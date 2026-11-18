@@ -1,0 +1,9 @@
+{
+  "name": "ui-foundry",
+  "displayName": "UI Foundry",
+  "version": "0.1.0",
+  "description": "Front-end design-system skill pack for React/Next.js: theme from inspiration, token + doc linting, Base UI component building, screenshot verification, and on-system UI composition. Tailwind v4 or CSS Modules.",
+  "author": { "name": "Alex Beeson" },
+  "license": "MIT",
+  "keywords": ["design-system", "frontend", "react", "nextjs", "tailwind", "base-ui", "design-tokens", "accessibility"]
+}

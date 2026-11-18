@@ -1,0 +1,44 @@
+/* ui-foundry specimen page styles (global, ufs- prefixed so they work with any CSS pipeline). Tokens only. */
+.ufs-page {
+  max-width: var(--container-content);
+  margin-inline: auto;
+  padding: var(--space-10) var(--space-6) var(--space-24);
+  font-family: var(--font-sans);
+  color: var(--color-foreground);
+}
+.ufs-header { display: flex; align-items: end; justify-content: space-between; gap: var(--space-4); padding-bottom: var(--space-8); border-bottom: 1px solid var(--color-border); }
+.ufs-eyebrow { font-size: var(--text-xs); line-height: var(--text-xs--line-height); color: var(--color-muted-foreground); font-family: var(--font-mono); }
+.ufs-h1 { font-family: var(--font-display); font-size: var(--text-4xl); line-height: var(--text-4xl--line-height); letter-spacing: var(--text-4xl--letter-spacing); font-weight: var(--font-weight-semibold); }
+.ufs-h2 { font-family: var(--font-display); font-size: var(--text-2xl); line-height: var(--text-2xl--line-height); letter-spacing: var(--text-2xl--letter-spacing); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-6); }
+.ufs-h3 { font-size: var(--text-base); line-height: var(--text-base--line-height); font-weight: var(--font-weight-semibold); }
+.ufs-meta { font-family: var(--font-mono); font-size: var(--text-xs); line-height: var(--text-xs--line-height); color: var(--color-muted-foreground); }
+.ufs-section { padding-block: var(--space-12); border-bottom: 1px solid var(--color-border); }
+
+.ufs-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: var(--space-3); }
+.ufs-swatch { display: flex; flex-direction: column; justify-content: space-between; min-height: 8rem; padding: var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--color-border); }
+.ufs-swatch figcaption { display: grid; gap: var(--space-1); font-size: var(--text-xs); line-height: var(--text-xs--line-height); }
+.ufs-swatch code { font-family: var(--font-mono); }
+.ufs-sample { font-family: var(--font-display); font-size: var(--text-3xl); line-height: var(--text-3xl--line-height); }
+.ufs-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+.ufs-chip { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-full); font-size: var(--text-xs); line-height: var(--text-xs--line-height); }
+.ufs-chip code { font-family: var(--font-mono); }
+.ufs-dot { width: var(--space-4); height: var(--space-4); border-radius: var(--radius-full); border: 1px solid var(--color-border); }
+
+.ufs-ladder { display: grid; gap: var(--space-4); }
+.ufs-step { display: grid; grid-template-columns: 9rem 1fr; align-items: baseline; gap: var(--space-4); }
+.ufs-fonts { display: grid; gap: var(--space-3); margin-top: var(--space-8); }
+
+.ufs-shapes { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: var(--space-4); }
+.ufs-shape { display: grid; place-items: center; height: 6rem; background: var(--color-card); color: var(--color-card-foreground); border: 1px solid var(--color-border); font-family: var(--font-mono); font-size: var(--text-xs); line-height: var(--text-xs--line-height); }
+
+.ufs-specimen { display: grid; gap: var(--space-4); padding-block: var(--space-6); }
+.ufs-specimen-head { display: grid; gap: var(--space-1); }
+.ufs-stage { padding: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-card); color: var(--color-card-foreground); }
+
+.ufs-toggle { height: var(--control-height-sm); padding-inline: var(--space-3); border: 1px solid var(--color-input); border-radius: var(--radius-md); background: var(--color-background); color: var(--color-foreground); font: inherit; font-size: var(--text-sm); cursor: pointer; }
+.ufs-toggle:focus-visible { outline: var(--focus-ring-width) solid var(--color-ring); outline-offset: var(--focus-ring-offset); }
+
+@media (max-width: 40rem) {
+  .ufs-header { flex-direction: column; align-items: start; }
+  .ufs-step { grid-template-columns: 1fr; gap: var(--space-1); }
+}

@@ -1,0 +1,13 @@
+#!/bin/sh
+# ui-foundry pre-commit: keep generated design files in sync and block off-system UI code.
+set -e
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(tsx|jsx|ts|css|scss)$' || true)
+if git diff --cached --name-only | grep -q '^design/tokens.json$'; then
+  node design/tools/tokens-build.mjs
+  git add design/generated design/DESIGN.md
+fi
+node design/tools/tokens-build.mjs --check
+node design/tools/inventory.mjs --check || { node design/tools/inventory.mjs && git add design/components.md; }
+if [ -n "$STAGED" ]; then
+  node design/tools/design-lint.mjs --scope code --files $STAGED
+fi

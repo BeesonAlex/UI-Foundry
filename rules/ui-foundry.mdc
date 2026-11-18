@@ -1,0 +1,23 @@
+---
+description: ui-foundry design-system contract for UI work in projects that have design/design.config.json — React/Next.js components, pages, styles, design tokens, DESIGN.md
+globs: ["**/*.tsx", "**/*.jsx", "**/*.css", "design/**"]
+alwaysApply: false
+---
+# ui-foundry design system
+
+Applies only when the project has `design/design.config.json`. If it doesn't and the user wants a design system,
+use the **foundry-setup** skill; otherwise ignore this rule.
+
+Read `design/DESIGN.md` and `design/components.md` before writing UI, and follow the ui-foundry skill that fits the
+task: theme-from-inspiration, design-lint, component-build, ui-build, ui-verify.
+
+- Build screens from the library components only (`componentsDir` in `design/design.config.json`, default
+  `components/ui`); never import `@base-ui/react` in feature code.
+- Style with semantic tokens only: `bg-primary`, `text-muted-foreground`, `border-border`, `rounded-lg`, `p-4`
+  (CSS: `var(--color-primary)`, `var(--space-4)`). No hex/rgb/oklch, no `bg-blue-500`/`text-white`, no `p-[13px]`, no `dark:` color overrides.
+- Need a new value or component? Change `design/tokens.json` → `npm run design:build`, or build the component
+  (component-build skill) → `npm run design:inventory`. Never edit `design/generated/*`.
+- The plugin hook rebuilds tokens and lints each edited UI file; if its findings don't show up in your context, run
+  `npm run design:lint -- --files <changed files>` yourself. Fix every error.
+- Before finishing UI work: dev server up → `npm run design:verify -- --routes <routes>` → view the screenshots,
+  compare against DESIGN.md's Do/Don't, iterate (max 3 rounds), then report.

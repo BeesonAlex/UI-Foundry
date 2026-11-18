@@ -1,0 +1,23 @@
+{
+  "$comment": "ui-foundry config. Every key is optional; defaults live in design/tools/lib/tokens.mjs.",
+  "styling": "both",
+  "componentStyle": "tailwind",
+  "componentsDir": "components/ui",
+  "specimenRoute": "/design-system",
+  "darkMode": "class",
+  "tailwind": { "reset": ["color", "radius", "shadow", "text"] },
+  "lint": {
+    "include": ["app", "src", "components", "pages"],
+    "exclude": ["node_modules", ".next", "dist", "build", "design/generated", "design/tools"],
+    "allow": ["app/design-system/**"],
+    "strict": false
+  },
+  "verify": {
+    "baseUrl": "http://localhost:3000",
+    "routes": ["/design-system"],
+    "viewports": [390, 768, 1440],
+    "themes": ["light", "dark"],
+    "offPaletteTolerance": 0.03,
+    "maxOffPalette": 0
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "ui-foundry",
+  "owner": {
+    "name": "Alex Beeson"
+  },
+  "metadata": {
+    "description": "UI Foundry \u2014 a front-end design-system skill pack for React/Next.js."
+  },
+  "plugins": [
+    {
+      "name": "ui-foundry",
+      "source": "./",
+      "description": "Front-end design-system skill pack for React/Next.js (tokens, linting, Base UI components, verification)."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+name: design-system
+on:
+  pull_request:
+    paths: ['design/**', 'app/**', 'src/**', 'components/**', 'lib/**', '**/*.css']
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # tokens.json ↔ generated CSS ↔ DESIGN.md ↔ components.md in sync; code free of off-system values; contrast AA
+      - run: node design/tools/tokens-build.mjs --check
+      - run: node design/tools/inventory.mjs --check
+      - run: node design/tools/design-lint.mjs --strict
+
+  # Optional: render the specimen + key routes and fail on contrast/overflow/off-palette regressions.
+  # verify:
+  #   runs-on: ubuntu-latest
+  #   needs: check
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with: { node-version: 22, cache: npm }
+  #     - run: npm ci && npx playwright install --with-deps chromium
+  #     - run: npm run build && (SHOW_DESIGN_SYSTEM=1 npm start &) && npx wait-on http://localhost:3000
+  #     - run: node design/tools/verify.mjs --routes /design-system /
+  #     - uses: actions/upload-artifact@v4
+  #       if: always()
+  #       with: { name: ui-verify, path: design/.verify }

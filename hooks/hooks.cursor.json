@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "node ./tools/hook-post-edit.mjs",
+        "timeout": 30
+      }
+    ],
+    "postToolUse": [
+      {
+        "matcher": "Write",
+        "command": "node ./tools/hook-post-edit.mjs",
+        "timeout": 30
+      }
+    ]
+  }
+}
